@@ -1,0 +1,15 @@
+/* [id^="path"]:hover {
+    fill: red;
+    cursor: pointer;
+} */
+.map {
+  width: 600px;       /* максимальная ширина */
+  max-width: 100%;    /* адаптивность на мобильных */
+  height: auto;       /* высота подгоняется по пропорции */
+  margin: 0 auto;     /* центрирование */
+}
+
+.hovered-region {
+    fill: red !important;
+    cursor: pointer;
+}
