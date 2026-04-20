@@ -60,6 +60,35 @@ function renderPopup(event, region, dream = {}) {
 }
 
 
+// mapData.forEach(element => {
+//     const item = document.getElementById(`path${element.title}`);
+
+//     if (item) {
+//         const bbox = item.getBBox();
+//         const svg = item.ownerSVGElement;
+        
+//         let point = svg.createSVGPoint();
+//         point.x = bbox.x + bbox.width / 2 / 1.5;
+//         point.y = bbox.y + bbox.height / 2;
+
+//         const matrix = item.getCTM(); 
+//         const centralPoint = point.matrixTransform(matrix);
+
+//         const imgSize = 50;
+//         const svgImg = document.createElementNS("http://www.w3.org/2000/svg", "image");
+
+//         svgImg.setAttribute("href", element.main_image);
+//         svgImg.setAttribute("width", imgSize);
+//         svgImg.setAttribute("height", imgSize);
+
+//         svgImg.setAttribute("x", centralPoint.x - imgSize / 2);
+//         svgImg.setAttribute("y", centralPoint.y - imgSize / 2);
+        
+//         svgImg.style.pointerEvents = "none";
+//         mapContainer.appendChild(svgImg);
+//     }
+// });
+
 mapData.forEach(element => {
     const item = document.getElementById(`path${element.title}`);
 
@@ -75,19 +104,38 @@ mapData.forEach(element => {
         const centralPoint = point.matrixTransform(matrix);
 
         const imgSize = 50;
-        const svgImg = document.createElementNS("http://www.w3.org/2000/svg", "image");
+        const radius = imgSize / 2;
 
+        // 1. Создаем уникальный ID для маски, чтобы они не конфликтовали
+        const clipId = `clip-${element.title}`;
+
+        // 2. Создаем clipPath и круг внутри него
+        const clipPath = document.createElementNS("http://www.w3.org/2000/svg", "clipPath");
+        clipPath.setAttribute("id", clipId);
+
+        const clipCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        clipCircle.setAttribute("cx", centralPoint.x);
+        clipCircle.setAttribute("cy", centralPoint.y);
+        clipCircle.setAttribute("r", radius);
+        
+        clipPath.appendChild(clipCircle);
+        mapContainer.appendChild(clipPath); // Добавляем маску в контейнер
+
+        // 3. Создаем само изображение
+        const svgImg = document.createElementNS("http://www.w3.org/2000/svg", "image");
         svgImg.setAttribute("href", element.main_image);
         svgImg.setAttribute("width", imgSize);
         svgImg.setAttribute("height", imgSize);
-
-        svgImg.setAttribute("x", centralPoint.x - imgSize / 2);
-        svgImg.setAttribute("y", centralPoint.y - imgSize / 2);
+        svgImg.setAttribute("x", centralPoint.x - radius);
+        svgImg.setAttribute("y", centralPoint.y - radius);
+        
+        // 4. Привязываем маску к изображению
+        svgImg.setAttribute("clip-path", `url(#${clipId})`);
         
         svgImg.style.pointerEvents = "none";
         mapContainer.appendChild(svgImg);
     }
-});
+})
 
 
 const MAP_WRAPPER_ID = 'path4119'
