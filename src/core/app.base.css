@@ -1,0 +1,4 @@
+@import "tailwindcss";
+svg image {
+    pointer-events: none;
+}
