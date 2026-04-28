@@ -1,10 +1,12 @@
 /// <reference types="vite-plugin-svgr/client" />
-import { MapSvg } from '@/map'
+import { MapSvg } from '@/features/map'
 import '@/core/app.base.css'
 
 const App: React.FC = () => {
   return (
-    <MapSvg />
+    <div className='w-full h-screen flex justify-center items-center'>
+      <MapSvg/>
+    </div>
   )
 }
 

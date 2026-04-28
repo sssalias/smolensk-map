@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss" important;
 svg image {
     pointer-events: none;
 }
