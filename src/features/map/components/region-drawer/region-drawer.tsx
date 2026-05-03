@@ -2,6 +2,10 @@ import { useHandleOutsideClick } from '@/core/hooks'
 import type { Region } from '@/features/map/repositories/region-repository'
 import { motion } from 'framer-motion'
 
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
+
 type Props = {
     region: Region,
     isOpen: boolean,
@@ -28,8 +32,17 @@ const RegionDrawer: React.FC<Props> = props => {
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className='h-screen w-1/3 bg-white'
             >
-                <div className='p-6'>
+                <div className='p-6 flex flex-col gap-4'>
                     <h1 className='text-2xl font-semibold'>{props.region.name}</h1>
+                    
+                    <Swiper
+                        slidesPerView={1}
+                        className='w-full'
+                    >
+                        {props.region.booklets.map(booklet => <SwiperSlide>
+                            <img src={booklet} alt="" />
+                        </SwiperSlide>)}
+                    </Swiper>
                 </div>
             </motion.div>
         </motion.div>

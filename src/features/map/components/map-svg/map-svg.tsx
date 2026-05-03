@@ -51,7 +51,7 @@ const MapSvg: React.FC = () => {
     }
 
     return (
-        <div ref={ref} className='h-full w-full relative'>
+        <div ref={ref} className='h-150 w-150 relative'>
             <SmolMap className='cursor-pointer' onClick={handleButtonClick} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} />
             {regionInfo && storyInfo && (
                 <StoryPopover 
