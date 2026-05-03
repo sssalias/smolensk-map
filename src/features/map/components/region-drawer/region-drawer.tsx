@@ -3,8 +3,10 @@ import type { Region } from '@/features/map/repositories/region-repository'
 import { motion } from 'framer-motion'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper/modules'
 
 import 'swiper/css'
+import 'swiper/css/navigation'
 
 type Props = {
     region: Region,
@@ -32,7 +34,7 @@ const RegionDrawer: React.FC<Props> = props => {
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className='h-screen w-1/3 bg-white'
             >
-                <div className='p-6 flex flex-col gap-4'>
+                <div className='p-6 flex flex-col gap-10'>
                     <div className='flex justify-between'>
                         <h1 className='text-2xl font-semibold'>{props.region.name}</h1>
                         <button className='text-2xl font-black cursor-pointer' onClick={() => props.onClose()}>✕</button>
@@ -41,6 +43,8 @@ const RegionDrawer: React.FC<Props> = props => {
                     <Swiper
                         slidesPerView={1}
                         className='w-full'
+                        modules={[Navigation]}
+                        navigation
                     >
                         {props.region.booklets.map(booklet => <SwiperSlide>
                             <img src={booklet} alt="" />

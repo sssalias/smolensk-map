@@ -2,3 +2,26 @@
 svg image {
     pointer-events: none;
 }
+
+.swiper {
+    --swiper-navigation-color: #000;
+    /* --swiper-navigation-size: 24px; */
+}
+
+/* В вашем CSS файле */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон */
+  width: 40px !important;  /* Немного увеличим область */
+  height: 40px !important;
+  border-radius: 50%;      /* Сделаем кнопку круглой */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Сама тень */
+  transition: all 0.3s ease;
+}
+
+/* Эффект при наведении */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+}
