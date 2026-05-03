@@ -33,7 +33,10 @@ const RegionDrawer: React.FC<Props> = props => {
                 className='h-screen w-1/3 bg-white'
             >
                 <div className='p-6 flex flex-col gap-4'>
-                    <h1 className='text-2xl font-semibold'>{props.region.name}</h1>
+                    <div className='flex justify-between'>
+                        <h1 className='text-2xl font-semibold'>{props.region.name}</h1>
+                        <button className='text-2xl font-black cursor-pointer' onClick={() => props.onClose()}>✕</button>
+                    </div>
                     
                     <Swiper
                         slidesPerView={1}
