@@ -36,6 +36,7 @@ const StoryPopover: React.FC<Props> = props => {
                     </div>
                     <div className='flex flex-col items-start text-[14px] text-blue-500'>
                         {props.story.audio_path && <a href={props.story.audio_path}>Слушать сказку</a>}
+                        {props.story.video_path && <a href={props.story.video_path}>Смотреть фильм</a>}
                         <button className='cursor-pointer' onClick={() => props.onRegionDrawerOpen()}>Читать про {props.region.name}</button>
                     </div>
                 </div>

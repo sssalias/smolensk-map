@@ -46,7 +46,7 @@ const MapSvg: React.FC = () => {
     const handleMouseOut = (event: React.MouseEvent<SVGSVGElement>) => {
         const target = event.target as SVGElement
         if (target.id !== WRAPPER_ID) {
-            target.style.fill = '';
+            target.style.fill = 'rgb(242, 247, 247)';
         }
     }
 
