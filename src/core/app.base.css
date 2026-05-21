@@ -3,6 +3,45 @@ svg image {
     pointer-events: none;
 }
 
+.loading-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: #e5e7eb;
+}
+
+.loading-image--region-slide {
+  height: 415px;
+  min-height: 415px;
+}
+
+.loading-image__skeleton {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  background-color: #e5e7eb;
+  transform: translateX(-100%);
+  animation: loading-image-skeleton 1.2s ease-in-out infinite;
+}
+
+.loading-image__img {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.loading-image__img--loaded {
+  opacity: 1;
+}
+
+@keyframes loading-image-skeleton {
+  to {
+    transform: translateX(100%);
+  }
+}
+
 .swiper {
     --swiper-navigation-color: #000;
     /* --swiper-navigation-size: 24px; */
@@ -24,4 +63,17 @@ svg image {
 .swiper-button-prev:hover {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
   transform: scale(1.1);
+}
+
+@media (max-width: 640px) {
+  .region-drawer .swiper-button-next,
+  .region-drawer .swiper-button-prev {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .region-drawer .swiper-button-next::after,
+  .region-drawer .swiper-button-prev::after {
+    font-size: 16px;
+  }
 }
