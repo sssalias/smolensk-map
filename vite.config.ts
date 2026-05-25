@@ -20,14 +20,14 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        entryFileNames: 'assets/map-bundle-v4.js',
+        entryFileNames: 'assets/map-bundle-v4.1.0.js',
         chunkFileNames: 'assets/[name]-[hash].js',
         
         // Настройка для CSS и других ассетов
         assetFileNames: (assetInfo) => {
           // Проверяем, заканчивается ли имя файла на .css
           if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-            return 'assets/map-bundle-v4.css'; // Фиксированное имя
+            return 'assets/map-bundle-v4.1.0.css'; // Фиксированное имя
             // Или 'assets/[name].[ext]' чтобы сохранить исходное имя без хеша
           }
           
