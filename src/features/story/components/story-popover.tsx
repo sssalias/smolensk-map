@@ -29,7 +29,7 @@ const StoryPopover: React.FC<Props> = props => {
                 <div className='flex flex-col gap-2'>
                     <h2 className='text-[16px] font-semibold'>{props.region.name}</h2>
                     <div>
-                        <div className='max-h-161.5 w-30 float-left mr-4 mb-4'>
+                        <div className='max-h-161.5 w-30 float-left mr-4 mb-2'>
                             <img className='object-cover h-full w-full' src={props.story.image_path} alt={props.story.hero} />
                         </div>
                         <p className='text-[14px]'>{props.story.text}</p>
